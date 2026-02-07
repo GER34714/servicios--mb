@@ -1,7 +1,3 @@
-<!-- =========================
-PARTE 1/2 — index.html (ACTUALIZADO: overlay de fondo + más contraste en tarjetas/texto)
-Pegá tal cual. La PARTE 2/2 va debajo.
-========================= -->
 <!doctype html>
 <html lang="es-AR">
 <head>
@@ -34,7 +30,7 @@ Pegá tal cual. La PARTE 2/2 va debajo.
 
       /* Overlay */
       --overlay-url: url("https://iili.io/fmHsacv.jpg");
-      --overlay-opacity: .22; /* visible pero sin arruinar legibilidad */
+      --overlay-opacity: .22;
 
       /* Cards (más contraste) */
       --card: rgba(10,10,14,.72);
@@ -63,19 +59,18 @@ Pegá tal cual. La PARTE 2/2 va debajo.
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
       color:var(--txt);
 
-      /* Fondo base + degradés */
       background:
         radial-gradient(1200px 800px at 15% 10%, rgba(242,211,107,.12), transparent 55%),
         radial-gradient(900px 650px at 85% 15%, rgba(201,162,39,.10), transparent 60%),
         radial-gradient(900px 650px at 70% 95%, rgba(255,255,255,.05), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
 
-      overflow-x:hidden; /* clave: nada se desplaza lateral */
-      padding-bottom: calc(92px + env(safe-area-inset-bottom)); /* WhatsApp no tapa el final */
+      overflow-x:hidden;
+      padding-bottom: calc(92px + env(safe-area-inset-bottom));
       position:relative;
     }
 
-    /* Overlay de fondo (se ve, pero controlado) */
+    /* Overlay de fondo */
     body::before{
       content:"";
       position:fixed;
@@ -89,7 +84,6 @@ Pegá tal cual. La PARTE 2/2 va debajo.
       pointer-events:none;
       z-index:-2;
     }
-    /* Suavizado extra para que el overlay no “ensucie” el texto */
     body::after{
       content:"";
       position:fixed;
@@ -101,7 +95,6 @@ Pegá tal cual. La PARTE 2/2 va debajo.
 
     a{ color:inherit; text-decoration:none; }
 
-    /* Centrado real en móviles */
     .wrap{
       width: min(var(--max), calc(100% - 32px));
       margin-inline:auto;
@@ -198,6 +191,23 @@ Pegá tal cual. La PARTE 2/2 va debajo.
 
     .btnIcon{ width:18px; height:18px; display:inline-block; }
 
+    /* WhatsApp mini inline (para mostrar número con icono) */
+    .waInline{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(37,211,102,.35);
+      background: rgba(0,0,0,.32);
+      font-weight: 900;
+      font-size: 12.5px;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 6px 18px rgba(0,0,0,.35);
+      white-space:nowrap;
+    }
+    .waInline svg{ width:16px; height:16px; }
+
     /* HERO */
     .hero{ padding: 26px 0 14px; }
     .heroGrid{
@@ -209,8 +219,8 @@ Pegá tal cual. La PARTE 2/2 va debajo.
     .panel{
       background: linear-gradient(180deg, rgba(10,10,14,.78), rgba(10,10,14,.62));
       border: 1px solid rgba(255,255,255,.14);
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
+      border-radius: 22px;
+      box-shadow: 0 18px 55px rgba(0,0,0,.58);
       backdrop-filter: blur(6px);
     }
 
@@ -287,7 +297,7 @@ Pegá tal cual. La PARTE 2/2 va debajo.
       align-items:center;
       justify-content:center;
       padding: 18px;
-      border-radius: var(--r);
+      border-radius: 22px;
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.34);
       min-height: 220px;
@@ -316,7 +326,6 @@ Pegá tal cual. La PARTE 2/2 va debajo.
     .fact b{ display:block; font-size: 13.5px; }
     .fact span{ display:block; color: var(--muted2); font-size: 12.5px; margin-top:3px; }
 
-    /* SECCIONES */
     main{ padding: 10px 0 34px; }
     .section{ margin-top: 16px; }
 
@@ -337,15 +346,15 @@ Pegá tal cual. La PARTE 2/2 va debajo.
     }
 
     .card{
-      background: linear-gradient(180deg, var(--card), var(--card2));
-      border: 1px solid var(--stroke);
-      border-radius: var(--r2);
+      background: linear-gradient(180deg, rgba(10,10,14,.72), rgba(10,10,14,.84));
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 16px;
       padding: 14px;
       min-width:0;
       backdrop-filter: blur(6px);
       box-shadow: 0 18px 55px rgba(0,0,0,.35);
     }
-    .card:hover{ border-color: var(--stroke2); }
+    .card:hover{ border-color: rgba(255,255,255,.20); }
     .card b{
       display:block;
       font-size: 14.8px;
@@ -354,7 +363,7 @@ Pegá tal cual. La PARTE 2/2 va debajo.
     }
     .card p{
       margin:0;
-      color: var(--muted);
+      color: rgba(255,255,255,.78);
       font-size: 13.7px;
       line-height:1.48;
       text-shadow: 0 6px 18px rgba(0,0,0,.35);
@@ -390,7 +399,7 @@ Pegá tal cual. La PARTE 2/2 va debajo.
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.34);
-      color: var(--muted);
+      color: rgba(255,255,255,.82);
       font-weight: 850;
       font-size: 12px;
       margin-bottom: 8px;
@@ -418,7 +427,7 @@ Pegá tal cual. La PARTE 2/2 va debajo.
     .ctaBand{
       margin-top: 18px;
       padding: 16px;
-      border-radius: var(--r);
+      border-radius: 22px;
       border: 1px solid rgba(242,211,107,.24);
       background: linear-gradient(135deg, rgba(10,10,14,.70), rgba(201,162,39,.12));
       display:flex;
@@ -429,12 +438,12 @@ Pegá tal cual. La PARTE 2/2 va debajo.
       backdrop-filter: blur(6px);
     }
     .ctaBand b{ font-size: 15px; text-shadow: 0 6px 18px rgba(0,0,0,.35); }
-    .ctaBand span{ color: var(--muted); font-size: 13px; text-shadow: 0 6px 18px rgba(0,0,0,.35); }
+    .ctaBand span{ color: rgba(255,255,255,.78); font-size: 13px; text-shadow: 0 6px 18px rgba(0,0,0,.35); }
 
     footer{
       border-top: 1px solid rgba(255,255,255,.08);
       padding: 18px 0 26px;
-      color: var(--muted2);
+      color: rgba(255,255,255,.64);
       font-size: 12.5px;
       text-shadow: 0 6px 18px rgba(0,0,0,.35);
     }
@@ -481,7 +490,6 @@ Pegá tal cual. La PARTE 2/2 va debajo.
     }
     .waIcon{ width:18px; height:18px; flex: 0 0 auto; display:block; }
 
-    /* Responsive */
     @media (max-width: 900px){
       .heroGrid{ grid-template-columns: 1fr; }
       .heroLogoBox{ min-height: 200px; }
@@ -513,9 +521,10 @@ Pegá tal cual. La PARTE 2/2 va debajo.
         <nav aria-label="Navegación">
           <a class="btn" href="#servicios">Servicios</a>
           <a class="btn" href="#trabajos">Trabajos</a>
+
+          <!-- Botón CTA con logo oficial de WhatsApp -->
           <a class="btn btnPrimary" href="#contacto">
             <span class="btnIcon" aria-hidden="true">
-              <!-- WhatsApp (logo oficial) SVG -->
               <svg viewBox="0 0 32 32" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill="rgba(255,255,255,.92)" d="M19.11 17.45c-.25-.13-1.47-.73-1.7-.81-.23-.09-.4-.13-.57.13-.17.25-.65.81-.8.98-.15.17-.3.19-.55.06-.25-.13-1.05-.39-2-.25-.74.11-1.23 1.2-2.28.48-.43-.3-.8-.68-1.12-1.08-.32-.4-.72-.96-.8-1.22-.09-.25-.01-.39.11-.5.11-.11.25-.3.38-.45.13-.15.17-.25.25-.43.09-.17.04-.32-.02-.45-.06-.13-.57-1.38-.78-1.89-.2-.49-.41-.43-.57-.44h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.12 0 1.25.91 2.46 1.04 2.63.13.17 1.79 2.73 4.34 3.83.61.26 1.08.42 1.45.53.61.19 1.16.16 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.57.21-1.06.15-1.18-.06-.11-.23-.17-.48-.3Z"/>
                 <path fill="rgba(255,255,255,.92)" d="M16 3.2c-7.06 0-12.8 5.42-12.8 12.1 0 2.14.59 4.13 1.62 5.86L3.2 28.8l7.95-1.55c1.47.74 3.14 1.16 4.85 1.16 7.06 0 12.8-5.42 12.8-12.1S23.06 3.2 16 3.2Zm0 22.03c-1.55 0-3.05-.41-4.35-1.18l-.31-.18-4.71.92.96-4.48-.2-.33a9.76 9.76 0 0 1-1.49-5.17c0-5.37 4.47-9.74 9.97-9.74s9.97 4.37 9.97 9.74-4.47 9.74-9.97 9.74Z"/>
@@ -546,10 +555,9 @@ Pegá tal cual. La PARTE 2/2 va debajo.
           </p>
 
           <div class="heroCtas">
-            <!-- Reemplazá TU_NUMERO por el número real (ej: 54911XXXXXXXX) -->
-            <a class="btn btnPrimary" href="https://wa.me/TU_NUMERO?text=Hola%20Servicios%20MB!%20Quiero%20pedir%20presupuesto." target="_blank" rel="noopener">
+            <!-- WhatsApp directo (numero: 2477-588339 => wa.me 5492477588339) -->
+            <a class="btn btnPrimary" href="https://wa.me/5492477588339?text=Hola%20Servicios%20MB!%20Quiero%20pedir%20presupuesto." target="_blank" rel="noopener">
               <span class="btnIcon" aria-hidden="true">
-                <!-- WhatsApp (logo oficial) SVG -->
                 <svg viewBox="0 0 32 32" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill="rgba(255,255,255,.92)" d="M19.11 17.45c-.25-.13-1.47-.73-1.7-.81-.23-.09-.4-.13-.57.13-.17.25-.65.81-.8.98-.15.17-.3.19-.55.06-.25-.13-1.05-.39-2-.25-.74.11-1.23 1.2-2.28.48-.43-.3-.8-.68-1.12-1.08-.32-.4-.72-.96-.8-1.22-.09-.25-.01-.39.11-.5.11-.11.25-.3.38-.45.13-.15.17-.25.25-.43.09-.17.04-.32-.02-.45-.06-.13-.57-1.38-.78-1.89-.2-.49-.41-.43-.57-.44h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.12 0 1.25.91 2.46 1.04 2.63.13.17 1.79 2.73 4.34 3.83.61.26 1.08.42 1.45.53.61.19 1.16.16 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.57.21-1.06.15-1.18-.06-.11-.23-.17-.48-.3Z"/>
                   <path fill="rgba(255,255,255,.92)" d="M16 3.2c-7.06 0-12.8 5.42-12.8 12.1 0 2.14.59 4.13 1.62 5.86L3.2 28.8l7.95-1.55c1.47.74 3.14 1.16 4.85 1.16 7.06 0 12.8-5.42 12.8-12.1S23.06 3.2 16 3.2Zm0 22.03c-1.55 0-3.05-.41-4.35-1.18l-.31-.18-4.71.92.96-4.48-.2-.33a9.76 9.76 0 0 1-1.49-5.17c0-5.37 4.47-9.74 9.97-9.74s9.97 4.37 9.97 9.74-4.47 9.74-9.97 9.74Z"/>
@@ -557,7 +565,17 @@ Pegá tal cual. La PARTE 2/2 va debajo.
               </span>
               <span>Pedir presupuesto</span>
             </a>
+
             <a class="btn" href="#trabajos">Ver trabajos</a>
+
+            <!-- Número con logo (donde corresponde: visible y copiables) -->
+            <span class="waInline" title="WhatsApp: 2477-588339">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path fill="rgba(255,255,255,.92)" d="M19.11 17.45c-.25-.13-1.47-.73-1.7-.81-.23-.09-.4-.13-.57.13-.17.25-.65.81-.8.98-.15.17-.3.19-.55.06-.25-.13-1.05-.39-2-.25-.74.11-1.23 1.2-2.28.48-.43-.3-.8-.68-1.12-1.08-.32-.4-.72-.96-.8-1.22-.09-.25-.01-.39.11-.5.11-.11.25-.3.38-.45.13-.15.17-.25.25-.43.09-.17.04-.32-.02-.45-.06-.13-.57-1.38-.78-1.89-.2-.49-.41-.43-.57-.44h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.12 0 1.25.91 2.46 1.04 2.63.13.17 1.79 2.73 4.34 3.83.61.26 1.08.42 1.45.53.61.19 1.16.16 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.57.21-1.06.15-1.18-.06-.11-.23-.17-.48-.3Z"/>
+                <path fill="rgba(255,255,255,.92)" d="M16 3.2c-7.06 0-12.8 5.42-12.8 12.1 0 2.14.59 4.13 1.62 5.86L3.2 28.8l7.95-1.55c1.47.74 3.14 1.16 4.85 1.16 7.06 0 12.8-5.42 12.8-12.1S23.06 3.2 16 3.2Zm0 22.03c-1.55 0-3.05-.41-4.35-1.18l-.31-.18-4.71.92.96-4.48-.2-.33a9.76 9.76 0 0 1-1.49-5.17c0-5.37 4.47-9.74 9.97-9.74s9.97 4.37 9.97 9.74-4.47 9.74-9.97 9.74Z"/>
+              </svg>
+              2477-588339
+            </span>
           </div>
 
           <div class="mini">Respuesta rápida por WhatsApp • Cotización según medidas y tipo de trabajo.</div>
@@ -573,12 +591,12 @@ Pegá tal cual. La PARTE 2/2 va debajo.
               <span>Colón, Bs. As.</span>
             </div>
             <div class="fact">
-              <b>Especialidad</b>
-              <span>Estructuras y herrería</span>
+              <b>WhatsApp</b>
+              <span>2477-588339</span>
             </div>
             <div class="fact">
-              <b>Contacto</b>
-              <span>WhatsApp directo</span>
+              <b>Respuesta</b>
+              <span>Rápida</span>
             </div>
           </div>
         </div>
@@ -736,14 +754,7 @@ Pegá tal cual. La PARTE 2/2 va debajo.
           </div>
           <a class="btn btnPrimary" href="#contacto">Contactar</a>
         </div>
-      </section>
-
-      <!-- PARTE 2/2 arranca abajo -->
-<!-- =========================
-PARTE 2/2 — index.html
-Pegá esto debajo de la PARTE 1/2
-========================= -->
-
+      </section><!
       <section id="contacto" class="section">
         <div class="sectionHead">
           <div>
@@ -755,10 +766,10 @@ Pegá esto debajo de la PARTE 1/2
         <div class="grid">
           <div class="card">
             <b>WhatsApp</b>
-            <p>Click y escribinos directo para pedir presupuesto.</p>
-            <div style="margin-top:12px;">
-              <!-- Reemplazá TU_NUMERO por el número real (ej: 54911XXXXXXXX) -->
-              <a class="btn btnPrimary" href="https://wa.me/TU_NUMERO?text=Hola%20Servicios%20MB!%20Quiero%20pedir%20presupuesto." target="_blank" rel="noopener">
+            <p>Escribinos directo para pedir presupuesto: <b>2477-588339</b></p>
+
+            <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+              <a class="btn btnPrimary" href="https://wa.me/5492477588339?text=Hola%20Servicios%20MB!%20Quiero%20pedir%20presupuesto." target="_blank" rel="noopener">
                 <span class="btnIcon" aria-hidden="true">
                   <!-- WhatsApp (logo oficial) SVG -->
                   <svg viewBox="0 0 32 32" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -768,6 +779,14 @@ Pegá esto debajo de la PARTE 1/2
                 </span>
                 <span>Escribir por WhatsApp</span>
               </a>
+
+              <span class="waInline" title="WhatsApp: 2477-588339">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill="rgba(255,255,255,.92)" d="M19.11 17.45c-.25-.13-1.47-.73-1.7-.81-.23-.09-.4-.13-.57.13-.17.25-.65.81-.8.98-.15.17-.3.19-.55.06-.25-.13-1.05-.39-2-.25-.74.11-1.23 1.2-2.28.48-.43-.3-.8-.68-1.12-1.08-.32-.4-.72-.96-.8-1.22-.09-.25-.01-.39.11-.5.11-.11.25-.3.38-.45.13-.15.17-.25.25-.43.09-.17.04-.32-.02-.45-.06-.13-.57-1.38-.78-1.89-.2-.49-.41-.43-.57-.44h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.12 0 1.25.91 2.46 1.04 2.63.13.17 1.79 2.73 4.34 3.83.61.26 1.08.42 1.45.53.61.19 1.16.16 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.57.21-1.06.15-1.18-.06-.11-.23-.17-.48-.3Z"/>
+                  <path fill="rgba(255,255,255,.92)" d="M16 3.2c-7.06 0-12.8 5.42-12.8 12.1 0 2.14.59 4.13 1.62 5.86L3.2 28.8l7.95-1.55c1.47.74 3.14 1.16 4.85 1.16 7.06 0 12.8-5.42 12.8-12.1S23.06 3.2 16 3.2Zm0 22.03c-1.55 0-3.05-.41-4.35-1.18l-.31-.18-4.71.92.96-4.48-.2-.33a9.76 9.76 0 0 1-1.49-5.17c0-5.37 4.47-9.74 9.97-9.74s9.97 4.37 9.97 9.74-4.47 9.74-9.97 9.74Z"/>
+                </svg>
+                2477-588339
+              </span>
             </div>
           </div>
 
@@ -801,7 +820,7 @@ Pegá esto debajo de la PARTE 1/2
   </footer>
 
   <!-- Botón flotante WhatsApp (integrado y no tapa) -->
-  <a class="waFloat" href="https://wa.me/TU_NUMERO?text=Hola%20Servicios%20MB!%20Quiero%20pedir%20presupuesto." target="_blank" rel="noopener" aria-label="Abrir WhatsApp para pedir presupuesto">
+  <a class="waFloat" href="https://wa.me/5492477588339?text=Hola%20Servicios%20MB!%20Quiero%20pedir%20presupuesto." target="_blank" rel="noopener" aria-label="Abrir WhatsApp para pedir presupuesto">
     <span class="waPill">
       <svg class="waIcon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path fill="rgba(255,255,255,.92)" d="M19.11 17.45c-.25-.13-1.47-.73-1.7-.81-.23-.09-.4-.13-.57.13-.17.25-.65.81-.8.98-.15.17-.3.19-.55.06-.25-.13-1.05-.39-2-.25-.74.11-1.23 1.2-2.28.48-.43-.3-.8-.68-1.12-1.08-.32-.4-.72-.96-.8-1.22-.09-.25-.01-.39.11-.5.11-.11.25-.3.38-.45.13-.15.17-.25.25-.43.09-.17.04-.32-.02-.45-.06-.13-.57-1.38-.78-1.89-.2-.49-.41-.43-.57-.44h-.49c-.17 0-.45.06-.68.32-.23.25-.89.87-.89 2.12 0 1.25.91 2.46 1.04 2.63.13.17 1.79 2.73 4.34 3.83.61.26 1.08.42 1.45.53.61.19 1.16.16 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.57.21-1.06.15-1.18-.06-.11-.23-.17-.48-.3Z"/>
